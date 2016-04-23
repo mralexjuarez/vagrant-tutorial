@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>No! We Will Not Do it LIVE!</title>
+
+		<meta name="description" content="Vagrant Tutorial">
+		<meta name="author" content="Alex Juarez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		
+		<style>
+			pre {
+				border: 0px !important;
+				box-shadow: none !important;
+			}
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		    <div class="reveal">
+		    	<!-- Any section element inside of this container is displayed as a slide -->
+		    	<div class="slides">
+		    		<section>
+		    			<h1>Vagrant</h1>
+		    			<h3>No! We Will Not Do It Live!</h3>
+		    			<p>
+		    				<small>Pieced together by Alex Juarez (<a href="http://twitter.com/mralexjuarez" target="_blank">@mralexjuarez)</a></small>
+		    			</p>
+		            <aside class="notes">Excited about Vagrant, mainly for troubleshooting.</aside>
+		    		</section>
+					<section>
+						<h2>But First....</h2>
+						<p>Let's make sure our environment is setup.</p>
+						<ul>
+							<li><pre># which VMBoxHeadless</pre></li>
+							<li><pre># which vagrant</pre></li>
+						</ul>
+						<p>Download Links</p>
+						<ul>
+							<li><a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox</a></li>
+							<li><a href="https://www.vagrantup.com/downloads.html">Vagrant</a></li>
+						</ul>
+					</section>
+		    		<section>
+		    			<h2>Course Outline</h2>
+		    			<ul>
+							<li>Why this Topic?</li>
+							<li>Gotta Get Up (To Get Down)</li>
+							<li>Common Terms</li>
+							<li>Vagrant Boxes</li>
+							<li>A Vagrant Work Flow</li>
+							<li>
+								The Vagrantfile
+								<ul>
+									<li>Shared Folders</li>
+									<li>Networking</li>
+									<li>Provisioning</li>
+								</ul>
+							</li>
+			             </ul>
+		             <aside class="notes">Reminder: This is only to skim the surface.</aside>
+		    		</section>
+					<section>
+						<h2>Extended Learning</h2>
+						<ul>
+							<li>Multiple Machines</li>
+							<li>Cloud Deployments</li>
+						</ul>
+					</section>
+		            <section>
+						<section>
+							<h1>So Why this Topic?</h1>
+							<img src="img/do-it-live.gif" alt="" />
+						</section>
+						<section>
+							<h1>So Why this Topic?</h1>
+							<ul>
+								<li>Testing Environments</li>
+								<li>Learning new Technologies</li>
+							</ul>
+						</section>
+		                <section>
+		                    <h1>So what is Vagrant?</h1>
+							<p>Vagrant lowers the time it takes to setup an virtual environment.</p>
+		                </section>
+		                <section>
+		                   <ul>
+		                       <li>Vagrant is written Ruby</li>
+		                       <li>Created in 2010 by Mitchell Hashimoto as a side project</li>
+		                       <li>Vagrant 1.0 Released in March of 2012</li>
+							   <li>Currently at version 1.8.1</li>
+		                   </ul>
+		                   <br/><br/>
+		                   <p>More Info @ <a href="http://www.vagrantup.com/" target="_blank">http://www.vagrantup.com/</a></p>
+		                    <aside class="notes">The idea is that through the whole process I can build up, destroy and rebuild up environments to spec quickly and repeatedly.</aside>
+		                </section>
+		            </section>
+							            <section>
+							                <section>
+							                    <h2>Gotta Get Up (To Get Down)</h2>
+							                    <hr/>
+							                    <h3>Get Down to Work that Is</h3>
+												<img src="img/get-up.jpg" alt="" style="max-height: 400px; max-width: 400px;"/>
+							                </section>
+											<section>
+												<h2>Project Directories</h2>
+												<p>Vagrant works out of project directories. Their configuration files are held under the .vagrant directory.</p>
+											</section>
+											<section>
+												<h2>Up and Running</h2>
+												<ul>
+													<li># mkdir ~/vagrant-boxes</li>
+													<li># mkir ~/vms</li>
+													<li># vagrant box add trusty ~/vagrant-boxes/ubuntu1404.box</li>
+													<li># cd ~/vms</li>
+													<li># vagrant init trusty</li>
+													<li># vagrant up</li>
+													<li># vagrant ssh</li>
+												</ul>
+												
+											</section>
+											<section>
+												<img src="img/five-minutes-later.png" alt="" />
+											</section>
+											<section>
+												<h2>Vagrant Setup</h2>
+												<script type="text/javascript" src="https://asciinema.org/a/d82laqbul7saxjah3iuptkgau.js" id="asciicast-d82laqbul7saxjah3iuptkgau" async></script>
+											</section>
+						
+											<section>
+												<h2>That's It!</h2>
+												<h3>Do work.</h3>
+											</section>
+										</section>
+					<section>
+						<section>
+							<h2>Common Terms</h2>
+		                    <hr/>
+		                    <h3>Provider, Boxes, Vagrantfile</h3>
+						</section>
+						<section>
+							<h2>Provider</h2>
+							<p>This is the type of VM we build out. We can build out Virtualbox, VMWare, Hyper-V Azure, Rackspace Cloud, AWS. It is essentially the the API we are speaking to.</p>
+						</section>
+						<section>
+							<h2>Boxes</h2>
+							<p>Boxes are the package format for Vagrant environments. This can be a pre-installed OS or a package that contains meta information for a cloud provider.</p>
+						</section>
+						<section>
+							<h2>Vagrantfile</h2>
+							<p>This is Vagrant's configuration file. It describes how to configure and provision an environment.</p>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h2>Vagrant Boxes</h2>
+							<hr/>
+							<h3>(No Witty Sub-title Sorry)</h3>
+						</section>
+		                <section>
+		                    <h2>Vagrant Boxes</h2>
+		                    <p>Simply put they are provider specific server images.  They contain an already-intsalled OS.</p>
+		                    <p>Boxes can be downloaded from
+								<ul>
+									<li><a href="http://www.vagrantbox.es/" target="_blank">http://www.vagrantbox.es/</a></li>
+									<li><a href="https://vagrantcloud.com" target="_blank">https://vagrantcloud.com</a></li>
+								</ul>
+		                    <aside class="notes">Think of these as snapshots of a very base system that you just installed</aside>
+		                </section>
+						<section>
+							<h2>Listing Vagrant's boxes</h2>
+							<pre><code># vagrant box list</code></pre>
+							<img src="img/vagrant-box-list.png" />
+						</section>
+						<section>
+							<h2>Adding a Vagrant Box</h2>
+							<code><pre># vagrant box add ubuntu/trusty64
+# vagrant box add {BOX-NAME} {URL}</pre></code>
+						</section>
+						<section>
+							<h2>Removing a Vagrant Box</h2>
+							<code><pre># vagrant box remove trusty64
+# vagrant box remove {BOX-NAME}</pre></code>
+						</section>
+						<section>
+							<h2>Managing Box Versions</h2>
+							<p>Versioned boxes can be managed through the update and outdated sub-commands.</p>
+							<pre><code># vagrant box update
+# vagrant box outdated</code></pre>
+						</section>
+	
+					</section>
+					<section>
+						<section>
+							<h2>A Vagrant Work Flow</h2>
+							<hr/>
+							<h3>Common Vagrant Commands</h3>	
+						</section>
+						<section>
+							<h2># vagrant up</h2>
+							<ul>
+							    <li>Create a Virtual machine based the Vagrantfile</li>
+							    <li>Modify RAM, CPUs</li>
+							    <li>Configure network interfaces so you can access the VM</li>
+							    <li>Set up shared folders so you can edit files locally</li>
+							    <li>Boots the VM</li>
+							    <li>Sets the VM hostname</li>
+							    <li>Provisions software</li>
+							    <li>Perform any host and guest specific tweaks for a machine</li>
+							</ul>
+						</section>
+						<section>
+							<h2># vagrant halt</h2>
+							<p>This command shuts down the running machine.</p>
+							<ul>
+								<li>First tries the shutdown command</li>
+								<li>If shutdown fails, the "power button" is pressed.</li>
+							</ul>
+							<p>All disk resources are still allocated on the host machine</p>
+						</section>
+						
+						<section>
+							<h2># vagrant destroy</h2>
+							<p>This command effectively destroys the guest machine removing the hard disk image</p>
+							<ul>
+								<li>Lose all changes since bringing up the machine</li>
+								<li>Files in the locally shared directory will remain intact</li>
+							</ul> 
+						</section>
+						
+						<section>
+							<h2># vagrant reload</h2>
+							<p>This command is used to shut-down the guest machine and re-configure it based off the Vagrantfile</p>
+							<p>Some examples of usage</p>
+							<ul>
+								<li>Reconfiguring network settings</li>
+								<li>Reconfiguring shared folders</li>
+								<li>Reconfiguring VM resources</li>
+							</ul>
+						</section>
+						
+						<section>
+							<h2># vagrant provision</h2>
+							<p>Runs configured provisioners against the machine. Useful when working on scripts and need to check the progress by re-running the script.</p>
+						</section>
+						
+						<section>
+							<h2># vagrant global-status</h2>
+							<p></p>
+							<img src="img/global-status.png" alt="" />
+						</section>
+					</section>
+				<section>
+					<section>
+						<h2>The Vagrantfile</h2>
+						<hr/>
+						<h3>Vagrant's Configuration File</h3>
+					</section>
+				    <section>
+				        <h2>Vagrantfile</h2>
+				        <p>This file describes how to build and configure machine(s) in your environment. It defines the box to use, networking, shared folders VM settings and provisioners.</p>
+				        <p>A Vagrantfile is created as follows:</p>
+				        <pre>$ vagrant init ubuntu/xenial64</pre>
+				        <aside class="notes">A Vagrant project is denoted by the existence of a Vagrantfile. There is only one file per project.</aside>
+				    </section>
+					
+					<section>
+						<h2>Additional Assets</h2>
+						<p> Under the <i>assets</i> directory there are example Vagrantfiles</p>
+					</section>
+	
+					<section>
+						<h2>Setting the Box to use</h2>
+						<code><pre>config.vm.box = "centos7"
+config.vm.hostname = "server"</pre></code>
+					</section>
+	
+				    <section>
+				       <h2>Networking</h2>
+				       <ul>
+				        <li>Forwarded ports allows access to a port on the host machine and have all traffic forwarded to a port on the guest machine.</li>
+				        <li>Port 22 enabled, but must be enabled for any other ports</li>
+						<li>Can add locally accessible IPs</li>
+				     </ul>
+					 <u>Example</u>
+				       <p>Port 8080 will be forwarded to the guest machine on port 80</p>
+				        <pre>Vagrant.configure("2") do |config|
+	config.vm.network "private_network", ip: "192.168.33.10"
+	config.vm.network "forwarded_port", guest: 80, host: 8080
+end</pre>
+				   <aside class="notes">There are other networking options, but for our scope we will cover basic port forwarding to the guest machine.</aside>
+				</section>
+				<section>
+					<h2>Port Forwarding</h2>
+					<img src="img/port-forwarding.png" alt="" style="max-height: 1000px; max-width: 706px;"/>
+				</section>
+				<section>
+					<h2>Private Networks</h2>
+					<img src="img/private_network.png" alt="" style="max-height: 866px; max-width: 592px;"/>
+				</section>
+               <section>
+                  <h2>Shared Folders</h2>
+                  <p>By default your project folder is shared with the guest machine under /vagrant.  This allows the user to work on the host machine and have it the content available on the guest machine.</p>
+                  <aside class="notes">One thing to make a note of here, is that if you are running a web server you will want to disable sendfile as the synced folder is done so over NFS</aside>
+               </section>
+			<section>
+				<h2>Shared Folders Example</h2>
+				<img src="img/shared-folders.png" alt="" />
+			</section>
+               
+			<section>
+	                  <h2>Provisioning</h2>
+	                  <p>You can use shell scripts and configuration management tools such as Chef, Puppet, and Ansible.</p>
+	                  <p>Our examples will introduce the file and shell provisioners as they are the most readily available.</p>
+               </section>
+			   <section>
+				   <h2>File Provisioner</h2>
+				   <p>The file provisioner copies files from a specified source to a specified destination</p>
+				   <pre>Vagrant.configure("2") do |config|
+# ... other configuration
+    config.vm.provision "file" , source: "./vimrc", destination: "/tmp/vimrc"
+end</pre>
+			  </section>
+			  <section>
+				  <h2>Shell (inline) Provisioner</h2>
+				  <p>The shell provisioner, when used with the inline option, runs a command right on the guest machine. This is good for single commands such as copying files in to place, or updating your system.</p>
+				   <pre>Vagrant.configure("2") do |config|
+# ... other configuration
+  config.vm.provision "shell", inline: "yum -y update"
+end</pre>
+			  </section>
+			  <section>
+				  <h2>Shell (path) Provisioner</h2>
+				  <p>The shell provisioner, when used with path option, can be used run either a local or remote script.</p>
+  <pre>Vagrant.configure("2") do |config|
+# ... other configuration
+   config.vm.provision "shell", path: "./adduser.sh"
+   config.vm.provision "shell", path: "https://setup.ius.io/"
+end</pre>
+			  </section>
+              <section>
+                  <h2>Chef and Ansible Examples</h2>
+				  <p>Example of using Chef Solo as a provisioner</p>
+                  <pre>Vagrant.configure("2") do |config|
+  # ... other configuration
+Vagrant.configure("2") do |config|
+  config.vm.provision "chef_solo" do |chef|
+    chef.add_recipe "apache"
+  end
+end</pre>
+               <p>Ansible</p>
+               <pre>Vagrant.configure("2") do |config|
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "playbook.yml"
+  end
+end</pre>
+               </section>
+			</section>
+			<section>
+			<section>
+				<h2>Multi-Machine</h2>
+				<hr/>
+				<h3>One Machine does not an environment make</h3>
+			</section>
+			<section>
+				<h2>Multi-Machine</h2>
+				<p>Vagrant can be used to provision, configure and control multiple machines</p>
+				<p>Example use cases</p>
+				<ul>
+					<li>Separate a web and database server</li>
+					<li>Create an multi-tier environment</li>
+					<li>Testing an API interface</li>
+				</ul>
+			</section>
+           <section>
+              <h2>Multi-Machine</h2>
+              <p>Multiple machines can be configured, provisioned and deployed all from the same Vagrant file.</p>
+              <pre>Vagrant.configure("2") do |config|
+	# Box 1 - Web Server
+    config.vm.define "web" do |web|
+         web.vm.box = "apache"
+    end
+
+    # Box 2 - Database Server
+    config.vm.define "db" do |db|
+        db.vm.box = "mysql"
+    end
+end</pre>
+              <aside class="notes">We can use a single Vagrantfile to define multiple boxes.  config.vm.define sets a variable to be accessed.  x.vm.box defines which box to use.</aside>
+           </section>
+		   <section>
+			   <h2>Multi-Machine</h2>
+			   <p>There are a number of a example files under the <i>assets</i> directory.</p>
+		  </section>
+		   </section>
+			<section>
+				<section>
+					<h1>Cloud Deployment</h1>
+				</section>
+				<section>
+					<h2>Cloud Deployment</h2>
+					<p>In this section we talk about two Vagrant plugins that will help us deploy cloud servers in Rackspace and AWS environments.</p>
+				</section>
+				<section>
+					<h2>Vagrant Plugins</h2>
+					<p>Installing the <a href="https://github.com/mitchellh/vagrant-rackspace" target="_blank">vagrant-rackspace</a> plugin</p>
+					<code><pre># vagrant plugin install vagrant-rackspace</a></pre></code>
+					<p>Installing the <a href="https://github.com/mitchellh/vagrant-aws" target="_blank">vagrant-aws plugin</a></p>
+					<code><pre># vagrant plugin install vagrant-aws</pre></code>
+				</section>
+				<section>
+					<h2>Vagrant Plugins</h2>
+					<p>Verify you have the new plug-ins installed</p>
+					<code><pre># vagrant plugin list</pre></code>
+				</section>
+				<section>
+					<h2>Vagrant &amp; Rackspace Cloud</h2>
+					<p>You will need:</p>
+					<ul>
+						<li><a href="https://support.rackspace.com/how-to/view-and-reset-your-api-key/" target="_blank">Username / API Key</a></li>
+						<li><a href="https://support.rackspace.com/how-to/about-regions/">Region</a></li>
+						<li>Flavor (e.g. 1GB Performance)<br/><small># vagrant rackspace flavors</small></li>
+						<li>Image (e.g. Ubuntu)<br/><small># vagrant rackspace images list</small></li>
+						<li>Vagrant Rackspace "Dummy" box
+							<small># vagrant box add rs-box https://github.com/mitchellh/vagrant-rackspace/raw/master/dummy.box</small>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Vagrant &amp; Rackspace Cloud</h2>
+					<pre>Vagrant.configure(2) do |config|
+  # The box is optional in newer versions of Vagrant
+  # config.vm.box = rs-box
+  config.ssh.private_key_path = ENV['MY_PRIVATE_KEY']
+
+  config.vm.provider :rackspace do |rs|
+    rs.username         = ENV['RS_USERNAME']
+    rs.api_key          = ENV['RS_API_KEY']
+    rs.rackspace_region = ENV['RS_REGION']
+    rs.public_key_path  = ENV['MY_PUBLIC_KEY']
+    rs.flavor           = /1 GB Performance/
+    rs.image            = /Ubuntu/
+  end
+end</pre>
+				</section>
+				<section>
+					<h2>Vagrant &amp; Rackspace Cloud</h2>
+					<p>Append this to ~/.bashrc</p>
+					<pre># Exported Variables for Rackspace Cloud
+export RS_USERNAME="RACKSPACE_USERNAME"
+export RS_REGION="RACKSPACE_REGION"
+export RS_API_KEY="RACKSPACE_API_KEY"
+export RS_NETWORK="RACKSPACE_NETWORK"
+export MY_PUBLIC_KEY="~/.ssh/id_rsa.pub"
+export MY_PRIVATE_KEY="~/.ssh/id_rsa"</pre>
+ 					<pre># source ~/.bashrc</pre>
+				</section>
+				<section>
+					<h2>Vagrant &amp; Rackspace Cloud</h2>
+					<pre>$ vagrant up --provider=rackspace</pre>
+				</section>
+			</section>
+		</section>
+		
+	    <section>
+	                   <h1>In Closing...</h1>
+	                 </section>
+
+	                 <section>
+	                   <h2>Contact Information</h2>
+	                   <div id="hcard-Alex-Juarez" class="vcard">
+	                    <a class="url fn" href="http://unsupported.io">Alex Juarez</a>
+	                    <div class="org">Principal Engineer Rackspace</div>
+	                    <a class="email" href="mailto:alex.juarez@rackspace.com">alex.juarez@rackspace.com</a>
+	                   <div><span class="category">twitter: <a href="http://www.twitter.com/mralexjuarez" target="_blank">@mralexjuarez</a></span></div><p style="font-size:smaller;">This <a href="http://microformats.org/wiki/hcard">hCard</a> created with the <a href="http://microformats.org/code/hcard/creator">hCard creator</a>.</p>
+	                   </div>
+	                 </section>
+
+	                 <section>
+	                   <h2>A short bio</h2>
+	                   <p>Alex Juarez is a Principal Engineer at Rackspace, touting 8 years with the company. Alex enjoys all things Linux, especially training and mentoring others, and is incredibly qualified to do so as an RHCA/RHCI. When Alex isn't helping others he's crafting killer cocktails and finding the best spots to grub in San Antonio.</p>
+	                   <small>Thanks <a href="https://twitter.com/jilljubs">@jilljubs</a></small>
+	                 </section>
+			  
+	   			  <section>
+	   				  <h2>Session Survey</h2>
+	   				  <a href="http://goo.gl/forms/4JJnVJVr3T" target="_blank">http://goo.gl/forms/4JJnVJVr3T</a>
+	   			 </section>
+
+	                 <section>
+	                   <h2>Q &amp; A</h2>
+	                   <h6>(Or we can talk about Whiskey)</h6>
+	                   <img src="http://0f7e4b6f48f01603dbf0-798ceaca68548b7d94e5a0f7efc280b5.r85.cf5.rackcdn.com/whiskey.jpg" alt="" style="border:0px;"/>
+	                 </section>
+
+	               </section>
+  
+    	</div>
+    	</div>
+			
+			
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				
+				multiplex: {
+                        secret: null, // Obtained from the socket.io server. Gives this (the master) control of the presentation
+                        id: '7090d630258fa667', // Obtained from socket.io server
+                        url: 'podium.unsupported.io' // Location of socket.io server
+                },
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+				    { src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+		            { src: 'plugin/multiplex/master.js', async: true },
+		            { src: 'plugin/multiplex/client.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
