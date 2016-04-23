@@ -63,7 +63,7 @@
 						</ul>
 						<p>Download Links</p>
 						<ul>
-							<li><a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox</a></li>
+							<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
 							<li><a href="https://www.vagrantup.com/downloads.html">Vagrant</a></li>
 						</ul>
 					</section>
@@ -166,7 +166,7 @@
 						</section>
 						<section>
 							<h2>Provider</h2>
-							<p>This is the type of VM we build out. We can build out Virtualbox, VMWare, Hyper-V Azure, Rackspace Cloud, AWS. It is essentially the the API we are speaking to.</p>
+							<p>This is the type of VM we build out. We can build out VirtualBox, VMWare, Hyper-V Azure, Rackspace Cloud, AWS. It is essentially the the API we are speaking to.</p>
 						</section>
 						<section>
 							<h2>Boxes</h2>
@@ -286,9 +286,20 @@
 				        <h2>Vagrantfile</h2>
 				        <p>This file describes how to build and configure machine(s) in your environment. It defines the box to use, networking, shared folders VM settings and provisioners.</p>
 				        <p>A Vagrantfile is created as follows:</p>
-				        <pre>$ vagrant init ubuntu/xenial64</pre>
+				        <pre>$ vagrant init ubuntu/trusty64</pre>
 				        <aside class="notes">A Vagrant project is denoted by the existence of a Vagrantfile. There is only one file per project.</aside>
 				    </section>
+					
+					<section>
+						<h2>VBox Guest Additions</h2>
+						<p>Many of the features used by Vagrant and VirtualBox are available when the VirtualBox Guest Additions are installed.</p>
+						<p>Most images come with at least a version of the Guest Additons installed.</p>
+					</section>
+					
+					<section>
+						<h2>VBox Guest Additions</h2>
+						<p>If the image does not have or has out dates additions, the ISO is available for download from <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">VirtualBox's website</a>.
+					</section>
 					
 					<section>
 						<h2>Additional Assets</h2>
